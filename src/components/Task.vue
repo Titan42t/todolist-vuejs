@@ -3,6 +3,8 @@ import EditBtn from './EditBtn.vue';
 
 defineProps({
   item: Object,
+  changingTask: Function,
+  editingTask: Function,
   updateTask: Function,
   deleteTask: Function
 })
@@ -11,9 +13,11 @@ defineProps({
 </script>
 
 <template>
-  <div class="task">
+  <div :id="item.id" class="task">
     <p>{{ item.name }}</p>
-    <EditBtn @click="updateTask" text="Éditer"></EditBtn>
-    <EditBtn @click="deleteTask(item.name)" text="Supprimer"></EditBtn>
+    <input :value="item.name">
+    <EditBtn @click="editingTask(item.id)" text="Éditer" class="edit"></EditBtn>
+    <EditBtn @click="updateTask(item.id)" text="Confirmer" class="confirm"></EditBtn>
+    <EditBtn @click="deleteTask(item.name)" text="Supprimer" class="supp"></EditBtn>
   </div>
 </template>

@@ -1,9 +1,10 @@
 <script setup>
 defineProps({
-  text: String
+  text: String,
+  class: String
 })
 </script>
 
 <template>
-  <button class="editBtn">{{ text }}</button>
+  <button class="editBtn" :class="class">{{ text }}</button>
 </template>
